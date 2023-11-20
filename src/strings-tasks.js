@@ -337,8 +337,15 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const j = str.replace(/[^a-zA-Z]/gi, '');
+  let i = j.length - 1;
+  let reverse = '';
+  while (i >= 0) {
+    reverse += j[i].toLowerCase();
+    i -= 1;
+  }
+  return j.toLowerCase() === reverse;
 }
 
 /**
@@ -376,7 +383,10 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-  return str.split().reverse();
+  return str
+    .split(' ')
+    .map((element) => element.split('').reverse().join(''))
+    .join(' ');
 }
 
 /**
@@ -390,8 +400,17 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let newstr = '';
+  for (let i = 0; i <= str.length; i += 1) {
+    const j = str.charAt(i);
+    if (j.toLowerCase() === j) {
+      newstr += j.toUpperCase();
+    } else {
+      newstr += j.toLowerCase();
+    }
+  }
+  return newstr;
 }
 
 /**
