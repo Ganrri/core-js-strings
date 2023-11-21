@@ -41,10 +41,7 @@ function getStringLength(value) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if (typeof value === 'string') {
-    return true;
-  }
-  return false;
+  return typeof value === 'string';
 }
 
 /**
@@ -244,7 +241,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  return `${minutes}:${seconds}`;
+  return `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
 }
 
 /**
@@ -316,7 +315,9 @@ function countVowels(str) {
   let sum = 0;
   str.split('').forEach((element) => {
     if (
-      element in ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y']
+      ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'].includes(
+        element
+      ) === true
     ) {
       sum += 1;
     }
